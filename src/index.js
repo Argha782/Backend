@@ -9,6 +9,23 @@ dotenv.config({
 })
 
 connectDB()
+.then((result) => {
+  const port= process.env.PORT || 8000
+  app.listen(port, ()=>{
+    console.log(`Server is running at ${port}`);
+  })
+  app.listen("error", (error)=>{
+    console.log("ERROR: ", error);
+    throw error
+  })
+}).catch((err) => {
+  console.log("MONGO_DB connection FAILED!!!",err);
+});
+
+
+
+
+
 /*
 import express from "express";
 const app = express();
