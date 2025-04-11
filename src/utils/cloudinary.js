@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
+import { log } from 'console';
 import fs from "fs"
 
 // (async function() {
@@ -21,8 +22,11 @@ import fs from "fs"
             // file has been uploaded successfully
             console.log(" Uploaded file on cloudinary", response.url);
             return response
+            console.log(response);
+            
         } catch (error) {
-            fs.unlinkSync(localFilePath)            // remove locally saved temporary file as the upload operation failed
+            fs.unlinkSync(localFilePath)            
+            // remove locally saved temporary file as the upload operation failed
             return null
         }
     }
